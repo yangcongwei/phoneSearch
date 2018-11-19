@@ -1,0 +1,104 @@
+.fixed{
+	position: fixed;
+	top:0;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+	background-color: #efeff4;
+}
+.fixed-box{
+	height: 205.92rpx;
+}
+/*搜索*/
+.search{
+	height:102.96rpx;
+	width: 100%;
+  	border-bottom:1px solid #d6d6db;
+	padding: 0 23.4rpx;
+	display: flex;
+	flex-direction:row; 
+	align-items: center;	
+	box-sizing: border-box;	
+}
+.search-box{	
+	height: 65.52rpx;	
+	font-size: 13px;
+	line-height: 65.52rpx;
+	box-sizing: border-box;
+	border-radius: 11.7rpx;	
+	border: 1px solid #e6e6ea;
+	background-color: #fff;
+	display: flex;
+	flex-direction:row;
+	flex: 1;
+}
+.search-txt{
+	flex: 1;
+	display: flex;
+	align-items: center;
+	color:#b2b2b2;
+}
+.search-btn{
+	width: 63.18rpx;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/**nav**/
+.nav{	
+	width: 100%;
+	height:102.96rpx;
+	line-height:102.96rpx;
+	display: flex;
+  	justify-content: space-around;
+  	background-color: #fff;
+  	border-bottom: 1px solid #d6d6db;
+  	position: relative;
+}
+.nav .nav-text{
+	width: 117rpx;
+	text-align: center;
+}
+.nav-bar{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 4.68rpx;
+	width: 117rpx;
+	margin-left: 66.5rpx;
+	background-color: #1472e0;
+	transition:all 300ms;
+	-webkit-transition:all 300ms;
+}
+.active{
+	color: #1472e0;
+	/*border-bottom: 4.68rpx solid #000;*/
+}
+.nav-updown{
+	display: flex;
+  	align-items: center;
+}
+.nav-updown1{
+	height: 13px;
+	width: 8px;
+	margin-left:3px;
+}
+
+/*//产品列表*/
+.swiper-box{ 
+	display: block; 
+	height: 100%; 
+	width: 100%; 
+	overflow: hidden;
+	padding-top:205.92rpx;
+	box-sizing: border-box;
+}
+.hot-box{
+	display: block;
+	height: 100%;
+}
+
+
+
+

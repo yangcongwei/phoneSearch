@@ -1,0 +1,88 @@
+<!--搜索-->
+<view>
+	<form bindreset="formReset">
+	<view class="search">		
+			<view class="search-box">
+				<icon class="search-btn" type="search" size="14" color="#b2b2b2"/>
+				<input class="search-txt" placeholder-class="search-pla" placeholder="搜索手机名称或型号" focus="{{true}}" type="text" bindinput="bindKeyInput"  bindconfirm="bindconfirm"/>
+				<button class="search-btn1" formType="reset"  hover-class="none" bindtap="searchClose" >
+					<icon class="search-btn" type="clear" size="14" color="#b2b2b2"/>
+				</button>
+			</view>
+			<view class="fz16 search-no" bindtap="navigateBack">取消</view>		
+	</view>
+	</form>
+	
+	<view class="fixed-box"></view>
+</view>
+<view class="search-res-box"  hidden="{{hidden}}">
+	<view class="search-res">
+		<block wx:for="{{datalistInput}}">
+			<navigator url="../detail/detail?id={{item.id}}" hover-class="hoverClass"><view class="search-list">{{item.name}}</view></navigator>
+		</block>
+	</view>
+</view>
+<!--<view class="loading-list" hidden="{{loadinghidden}}">
+    <image class="loading-gif" src="../../image/loading.gif"/>
+	<text class="fz14">加载中...</text>
+</view>-->
+<view hidden="{{failhidden}}" class="failhidden">网络不给力，请检查您的网络</view>
+<view class="product" hidden="{{searhhidden}}">
+    <!--<view class="themes-list-product" wx:for="{{dataThemes}}">
+        <navigator url="../themes/themes?id={{item.id}}">
+            <view class="themes-list-thumbnail">
+                <image class="themes-list-img" src="{{item.thumbnail}}" />
+            </view>
+            <view class="themes-list-main">
+                <view class="themes-list-name">{{item.name}}</view>
+                <view class="themes-list-description">{{item.description}}</view>
+            </view>
+        </navigator>
+    </view>--> 
+    
+	    <block wx:if="{{listhidden}}">
+		    <view class="no-product">
+		    	<text>未搜索到</text>
+		    	<text class="search-pro">“{{inputValue}}”</text>
+		    	<view >建议更换关键词试试</view>
+		    </view>
+	    </block>
+	    <block wx:else>
+		    <view class="product">
+		    	<view class="list product-list" wx:for="{{datalist}}">
+		            <navigator url="../detail/detail?id={{item.id}}"  hover-class="hoverClass">
+		                <view class="product-list-img">
+		                    <image class="product-list-img1" mode="aspectFit" src="{{item.guidePic}}" />
+		                </view>
+		                <view class="product-list-main">
+		                    <view class="product-list-name">{{item.name}}</view>
+		                    <view class="product-list-btn">
+		                    	<block wx:if="{{item.mem.length!=0}}">
+		                    		<view class="yellow">{{item.mem}}</view>
+		                    	</block><block wx:if="{{item.sz.length!=0}}">
+		                    		<view class="green">{{item.sz}}</view>
+		                    	</block>
+		                    	<block wx:if="{{item.options.length!=0}}">
+		                    		<view class="blue">{{item.options}}</view>
+		                    	</block>
+		                    </view>
+		                    <view class="product-list-des">
+		                   	 	<text class="gray fz14">{{item.markettime}}上市</text>
+		                    		<text class="fz17 product-list-money">{{item.price}}</text>
+		                    </view>
+		                </view>
+		            </navigator>
+		        </view>
+		    </view>
+	    </block>
+    <!-- 没有更多的时候 -->
+    <!--<view class="loading-list">
+        <block wx:if="{{hothidden}}">
+            <image class="loading-gif" src="../../image/loading.gif"/>
+    		<text class="fz14">加载中...</text>
+        </block>
+        <block wx:else>
+            <text>没有更多了</text>
+        </block>
+    </view>-->
+</view>

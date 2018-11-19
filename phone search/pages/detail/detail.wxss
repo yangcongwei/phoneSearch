@@ -1,0 +1,159 @@
+/*轮播图*/
+.swiper-img{
+	height:503.1rpx;
+}
+.swiper-img swiper-item{
+	display: flex;
+  justify-content: center;
+  
+}
+.slide-image{
+	margin-top:23.4rpx;
+	height: 421.2rpx;
+	width: 561.6rpx;
+}
+/*产品名称*/
+.product-tit{
+	width: 100%;
+	padding:23.4rpx;
+	box-sizing: border-box;
+	color: #121212;
+}
+.product-tit::after{
+	content: " ";
+	display: block;
+	clear: both;
+	
+}
+.product-tit-name{
+	line-height: 74.88rpx;
+	/*display: flex;
+	justify-content: space-between;*/
+}
+.product-tit-name1{
+	word-break: break-all;
+	float: left;
+}
+.product-tit-name .red{
+	float: right;
+}
+.product-tit-time{
+	float: left;
+	width: 566rpx;
+	text-align: left;
+	line-height: 60.84rpx;
+	color: #888;
+}
+/*其他报价*/
+.offer-tit{
+	height: 102.96rpx;
+	line-height:102.96rpx;
+	border-bottom: 1px solid #eee;
+	padding-left:23.4rpx;
+	background-color: #f5f5f5;
+}
+.offer-list{
+	background-color: #fff;
+	overflow: hidden;
+	transition:height 100ms;
+}
+.offer-list navigator{
+	padding: 0 23.4rpx;
+}
+.offer-list-pro{
+	padding:35.1rpx 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #576b95;
+	border-top: 1px solid #e5e5e5;
+	margin-top:-1px;
+}
+.offer-list-name{
+	width: 514.8rpx;
+	word-break:break-all;
+}
+.offer-more{
+	height: 102.96rpx;
+	line-height:102.96rpx;
+	color: #576b95;
+	margin-top: -1px;
+	border-top: 1px solid #e5e5e5;
+	text-align: center;	
+}
+.offer-more-icn{
+	width: 29.25rpx;
+	height:18.72rpx;
+	margin-left:29.25rpx;
+}
+/*参数*/
+.param{
+	margin-top:11.7rpx;		
+}
+.param-tit{
+	display: flex;
+	align-items: center;
+	height: 111.15rpx;
+	/*line-height: 64.35rpx;*/
+	/*padding-top:23.4rpx;
+	margin-bottom:23.4rpx;*/
+}
+.param-tit image{
+	height: 37.44rpx;
+	width: 37.44rpx;
+	margin:0 23.4rpx;
+}
+.param-tit text{
+	font-size: 14px;
+}
+.param-list{
+	display: flex;	
+	
+	margin-bottom: 23.4rpx;
+	line-height: 20px;
+}
+.param-list-tit{
+	font-size: 13px;
+	margin-left:81.9rpx;
+	width:187.2rpx;
+	color: #999;
+}
+.param-list-par{
+	font-size: 13px;
+	padding-right: 23.4rpx;
+	width: 468rpx;
+}
+
+
+.failhidden{
+	margin:80px 0;
+	text-align: center; 
+	width: 750rpx;
+}
+
+/*轮播图下边按钮*/
+page .wx-swiper-dots.wx-swiper-dots-horizontal{
+    margin-bottom: 4rpx;
+}
+page .wx-swiper-dot{
+    width: 14.04rpx;
+    display: inline-flex;
+    height: 14.04rpx;
+    vertical-align:middle;
+    
+    margin:0 17.55rpx;
+}
+page .wx-swiper-dot::before{
+    content: '';
+    background: #dcdcdc;
+    flex-grow: 1;
+    border-radius: 50%;
+}
+page .wx-swiper-dot-active::before{
+    content: '';
+    background:#1472e0;
+    flex-grow: 1;
+}
+.hoverClass1{
+	background-color: #e3e3e3;
+}

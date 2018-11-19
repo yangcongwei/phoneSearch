@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<view hidden="{{failhidden}}" class="failhidden">网络不给力，请检查您的网络</view>
+<view hidden="{{pageHidden}}">
+	<view class="list" hidden="{{focus.length==0 ? true : false}}">
+	    <swiper class="swiper-img" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+	        <block wx:for="{{focus}}">
+	            <swiper-item>
+	                <image src="{{item.url}}" class="slide-image"></image>
+	            </swiper-item>
+	        </block>
+	    </swiper>
+	</view>
+	<view class="list fz17 product-tit">
+		<view class="product-tit-name">
+			<text class="product-tit-name1">{{brief.name}}</text>
+			<text class="red">{{brief.price}}</text>
+		</view>
+		<view class="fz14 product-tit-time">上市日期：{{brief.market_time}}</view>
+	</view>
+	<view class="other-offer" hidden="{{series.length == 0 ? true : false }}">
+		<view class="fz14 offer-tit">同系列其他产品报价</view>
+		<view class="offer-list">
+			<block wx:for="{{series1}}">
+				<navigator url="detail?id={{item.id}}" hover-class="hoverClass1">
+				    <view class="fz14 offer-list-pro">
+				        <text class="offer-list-name">{{item.name}}</text>
+						<text class="red">{{item.price}}</text>
+				    </view>
+			   </navigator>
+		    </block>
+		</view>
+		<view class="list fz14 offer-more" bindtap="offerMore" hidden="{{series.length < 4 ? true : hidden }}">
+			<text>展开更多</text>
+			<image class="offer-more-icn" src="../../image/icon_more.png"></image>
+		</view>
+	</view>
+	<view class="param">
+		<view class="list" wx:for="{{param}}" wx:for-item="items">
+			<view class="param-tit">
+				<!--<block wx:for='{{paramIcon}}'>-->
+					<!--<image src="../../image/icon_{{index+1}}.png"></image>-->
+					<image src="../../image/icon_{{items.name=='包装清单'?1:(items.name=='支持网络'?2:(items.name=='屏幕信息'?3:(items.name=='系统硬件'?4:(items.name=='相机拍照'?5:(items.name=='机身信息'?6:(items.name=='基本功能'?7:(items.name=='影音娱乐'?8:(items.name=='定位与传感器'?9:10))))))))}}.png"></image>
+				<!--</block>-->				
+				<text>{{items.name}}</text>
+			</view>
+			<view>
+				<view class="param-list" wx:for="{{items.speparam}}" wx:for-item="speparam">
+					<view class="param-list-tit">{{speparam.name}}</view>
+					<text class="param-list-par">{{speparam.value}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

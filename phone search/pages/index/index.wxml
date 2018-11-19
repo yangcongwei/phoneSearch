@@ -1,0 +1,169 @@
+<!--index.wxml-->
+<!-- loading -->
+
+<loading hidden="{{hidden}}">
+    加载中...
+</loading>
+<view class="fixed">
+	<view class="search" bindtap="searchOpen">
+		<view class="search-box">
+			<icon class="search-btn" type="search" size="14" color="#b2b2b2"/>
+			<view class="search-txt" >搜索手机名称或型号</view>
+			<!--<icon class="search-btn" type="clear" size="14" color="#b2b2b2"/>-->
+		</view>
+		<!--<view class="search-no">取消</view>-->
+	</view>
+	<view  class="fz17 nav">			  
+		<view class="nav-text {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">热门</view>
+		<view class="nav-text {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">新品</view>	
+		<view class="nav-text {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="swichNav">价格<image class="nav-updown1" src="../../image/monry{{listorder}}.png"></image></view>				
+		<view class="nav-bar" style="left:{{251.2*currentTab}}rpx;"></view>
+	</view>
+</view>
+<!--<view class="fixed-box"></view>-->
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight}}px" bindchange="bindChange">
+    
+    <!--热门-->
+    <swiper-item>        
+         <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+			<view class="product">
+		        <view class="list product-list" wx:for="{{dataHote}}" wx:key="id">
+		            <navigator url="../detail/detail?id={{item.id}}"  hover-class="hoverClass">
+		                <view class="product-list-img">
+		                    <image class="product-list-img1" mode="aspectFit" src="{{item.guidePic}}" />
+		                </view>
+		                <view class="product-list-main">
+		                    <view class="product-list-name">{{item.name}}</view>
+		                    <view class="product-list-btn">
+		                    	<block wx:if="{{item.mem.length!=0}}">
+		                    		<view class="yellow">{{item.mem}}</view>
+		                    	</block><block wx:if="{{item.sz.length!=0}}">
+		                    		<view class="green">{{item.sz}}</view>
+		                    	</block>
+		                    	<block wx:if="{{item.options.length!=0}}">
+		                    		<view class="blue">{{item.options}}</view>
+		                    	</block>		                    	
+		                    </view>
+		                    <view class="product-list-des">
+		                   	 	<text class="gray fz14">{{item.markettime}}上市</text>
+		                    		<text class="fz17 product-list-money">{{item.price}}</text>
+		                    </view>
+		                </view>
+		            </navigator>
+		        </view>
+		    </view>
+		    <!-- 没有更多的时候 -->
+            <view class="loading-list">
+            	<block wx:if="{{wifihidden}}">
+            	 	<text class="wifihidden">网络不给力,请检查您的网络</text>
+            	</block>
+            	<block wx:else>
+	                <block wx:if="{{hothidden}}">
+	                    <image class="loading-gif" src="../../image/loading.gif"/>
+			    		<text class="fz14">加载中...</text>
+	                </block>               		            		        
+			        <block wx:else>
+			            <text>没有更多了</text>
+			        </block>
+		        </block>
+            </view>
+		</scroll-view>
+	</swiper-item> 
+	<!--新品-->
+    <swiper-item>        
+        <scroll-view class="hot-box" scroll-y="true" upper-threshold="50" lower-threshold="100" bindscrolltolower="scrolltolower">
+			<view class="product">
+		        <view class="list product-list" wx:for="{{dataNew}}" wx:key="id">
+		            <navigator url="../detail/detail?id={{item.id}}"   hover-class="hoverClass">
+		                <view class="product-list-img">
+		                    <image class="product-list-img1" mode="aspectFit" src="{{item.guidePic}}" />
+		                </view>
+		                <view class="product-list-main">
+		                    <view class="product-list-name">{{item.name}}</view>
+		                    <view class="product-list-btn">
+		                    	<block wx:if="{{item.mem.length!=0}}">
+		                    		<view class="yellow">{{item.mem}}</view>
+		                    	</block><block wx:if="{{item.sz.length!=0}}">
+		                    		<view class="green">{{item.sz}}</view>
+		                    	</block>
+		                    	<block wx:if="{{item.options.length!=0}}">
+		                    		<view class="blue">{{item.options}}</view>
+		                    	</block>
+		                    </view>
+		                    <view class="product-list-des">
+		                   	 	<text class="gray fz14">{{item.markettime}}上市</text>
+		                    		<text class="fz17 product-list-money">{{item.price}}</text>
+		                    </view>
+		                </view>
+		            </navigator>
+		        </view>
+		    </view>
+		    <!-- 没有更多的时候 -->
+		    <view class="loading-list">
+		        <block wx:if="{{wifihidden}}">
+            	 	<text class="wifihidden">网络不给力,请检查您的网络</text>
+            	</block>
+            	<block wx:else>
+	                <block wx:if="{{hothidden}}">
+	                    <image class="loading-gif" src="../../image/loading.gif"/>
+			    		<text class="fz14">加载中...</text>
+	                </block>               		            		        
+			        <block wx:else>
+			            <text>没有更多了</text>
+			        </block>
+		        </block>
+		    </view>
+		</scroll-view>
+	</swiper-item> 
+	<!--价格-->
+    <swiper-item>        
+        <scroll-view class="hot-box" scroll-y="true" upper-threshold="50"  lower-threshold="100" bindscrolltolower="scrolltolower">
+			<view class=" product">
+		        <view class="list product-list" wx:for="{{dataMoney}}" wx:key="id">
+		            <navigator url="../detail/detail?id={{item.id}}"  hover-class="hoverClass">
+		                <view class="product-list-img">
+		                    <image class="product-list-img1" mode="aspectFit" src="{{item.guidePic}}" />
+		                </view>
+		                <view class="product-list-main">
+		                    <view class="product-list-name">{{item.name}}</view>
+		                    <view class="product-list-btn">
+		                    	<block wx:if="{{item.mem.length!=0}}">
+		                    		<view class="yellow">{{item.mem}}</view>
+		                    	</block><block wx:if="{{item.sz.length!=0}}">
+		                    		<view class="green">{{item.sz}}</view>
+		                    	</block>
+		                    	<block wx:if="{{item.options.length!=0}}">
+		                    		<view class="blue">{{item.options}}</view>
+		                    	</block>
+		                    </view>
+		                    <view class="product-list-des">
+		                   	 	<text class="gray fz14">{{item.markettime}}上市</text>
+		                    		<text class="fz17 product-list-money">{{item.price}}</text>
+		                    </view>
+		                </view>
+		            </navigator>
+		        </view>
+		   </view>
+		   <!-- 没有更多的时候 -->
+		    <view class="loading-list">
+		        <block wx:if="{{wifihidden}}">
+            	 	<text class="wifihidden">网络不给力,请检查您的网络</text>
+            	</block>
+            	<block wx:else>
+	                <block wx:if="{{hothidden}}">
+	                    <image class="loading-gif" src="../../image/loading.gif"/>
+			    		<text class="fz14">加载中...</text>
+	                </block>               		            		        
+			        <block wx:else>
+			            <text>没有更多了</text>
+			        </block>
+		        </block>
+		    </view>
+		</scroll-view>
+	</swiper-item> 
+	
+    <!--<view class="loading-list">
+    	<image class="loading-gif" src="../../image/loading.gif"/>
+    	<text>加载中...</text>
+    </view>-->
+
